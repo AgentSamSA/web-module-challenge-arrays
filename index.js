@@ -274,7 +274,7 @@ function getAverageWordLength(array) {
         let words = array[i].split(" ");
         wordTotal += words.length;
     }
-    return Math.round(wordTotal/array.length);
+    return Math.round(wordTotal / array.length);
 }
 console.log(getAverageWordLength(originalFlavors));
 
@@ -295,7 +295,10 @@ function getRandomFlavors(array1, array2, array3, array4) {
     const randomFlavorGroup = [array1, array2, array3, array4];
     for (let i = 0; i < 31; i++) {
         let pickedFlavors = randomFlavorGroup[Math.floor(Math.random() * randomFlavorGroup.length)];
-        randomFlavors.push(pickedFlavors[Math.floor(Math.random() * pickedFlavors.length)]);
+        let chosenFlavor = pickedFlavors[Math.floor(Math.random() * pickedFlavors.length)];
+        if (!(randomFlavors.includes(chosenFlavor))) {
+            randomFlavors.push(chosenFlavor);
+        }
     }
     return randomFlavors;
 }
